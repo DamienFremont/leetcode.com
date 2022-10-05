@@ -1,96 +1,76 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.stream.Stream;
+
 
 class SolutionTest {
 
-    @Test
-    void example1() {
+    private static Stream<Arguments> provideImpl() {
+        return Stream.of(
+                Arguments.of(new Solution()),
+                Arguments.of(new Solution2())
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideImpl")
+    void example1(Solution impl) {
         var arg1 = new int[]{2, 4, 3};
         var arg2 = new int[]{5, 6, 4};
         var exp = new int[]{7, 0, 8};
 
-        var res = when(arg1, arg2);
+        var res = Tests.when(impl, arg1, arg2);
 
-        then(exp, res);
+        Tests.then(exp, res);
     }
 
-    @Test
-    void example2() {
+    @ParameterizedTest
+    @MethodSource("provideImpl")
+    void example2(Solution impl) {
         var arg1 = new int[]{0};
         var arg2 = new int[]{0};
         var exp = new int[]{0};
 
-        var res = when(arg1, arg2);
+        var res = Tests.when(impl, arg1, arg2);
 
-        then(exp, res);
+        Tests.then(exp, res);
     }
 
-    @Test
-    void example3() {
+    @ParameterizedTest
+    @MethodSource("provideImpl")
+    void example3(Solution impl) {
         var arg1 = new int[]{9, 9, 9, 9, 9, 9, 9};
         var arg2 = new int[]{9, 9, 9, 9};
         var exp = new int[]{8, 9, 9, 9, 0, 0, 0, 1};
 
-        var res = when(arg1, arg2);
+        var res = Tests.when(impl, arg1, arg2);
 
-        then(exp, res);
+        Tests.then(exp, res);
     }
 
-    @Test
-    void example33() {
+    @ParameterizedTest
+    @MethodSource("provideImpl")
+    void example33(Solution impl) {
         var arg1 = new int[]{9};
         var arg2 = new int[]{1, 9, 9, 9, 9, 9, 9, 9, 9, 9};
         var exp = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 
-        var res = when(arg1, arg2);
+        var res = Tests.when(impl, arg1, arg2);
 
-        then(exp, res);
+        Tests.then(exp, res);
     }
 
-    @Test
-    void example1566() {
-        var arg1 = new int[]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-        var arg2 = new int[]{5,6,4};
-        var exp = new int[]{6,6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+    @ParameterizedTest
+    @MethodSource("provideImpl")
+    void example1566(Solution impl) {
+        var arg1 = new int[]{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
+        var arg2 = new int[]{5, 6, 4};
+        var exp = new int[]{6, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 
-        var res = when(arg1, arg2);
+        var res = Tests.when(impl, arg1, arg2);
 
-        then(exp, res);
-    }
-
-    private void then(int[] exp, ListNode res) {
-        System.out.println("Expected: " + toString(exp));
-        assertTrue(res != null);
-        var last = res;
-        for (var xxx : exp) {
-            assertEquals(xxx, last.val);
-            last = last.next;
-        }
-    }
-
-    private ListNode when(int[] arg1, int[] arg2) {
-        System.out.println("");
-        var cut = new Solution();
-        var res = cut.addTwoNumbers(toListNode(arg1), toListNode(arg2));
-        return res;
-    }
-
-    private String toString(int[] exp) {
-        var res = new StringBuilder("");
-        for (var i : exp) {
-            res.append(i);
-        }
-        return res.reverse().toString();
-    }
-
-    private ListNode toListNode(int[] args) {
-        System.out.println("Input:" + args);
-        ListNode last = null;
-        for (int i = args.length - 1; i >= 0; i--) {
-            var curr = new ListNode(args[i], last);
-            last = curr;
-        }
-        return last;
+        Tests.then(exp, res);
     }
 }
