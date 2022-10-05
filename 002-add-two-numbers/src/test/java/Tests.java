@@ -1,5 +1,4 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Tests {
 
@@ -11,6 +10,7 @@ public class Tests {
             assertEquals(xxx, last.val);
             last = last.next;
         }
+        assertNull(last);
     }
 
     static ListNode when(Solution cut, int[] arg1, int[] arg2) {
