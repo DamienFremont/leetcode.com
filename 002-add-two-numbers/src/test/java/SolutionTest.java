@@ -48,6 +48,17 @@ class SolutionTest {
         then(exp, res);
     }
 
+    @Test
+    void example1566() {
+        var arg1 = new int[]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+        var arg2 = new int[]{5,6,4};
+        var exp = new int[]{6,6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
+
+        var res = when(arg1, arg2);
+
+        then(exp, res);
+    }
+
     private void then(int[] exp, ListNode res) {
         System.out.println("Expected: " + toString(exp));
         assertTrue(res != null);
@@ -77,7 +88,6 @@ class SolutionTest {
         ListNode last = null;
         for (int i = args.length - 1; i >= 0; i--) {
             var curr = new ListNode(args[i], last);
-            System.out.println(curr.val);
             last = curr;
         }
         return last;

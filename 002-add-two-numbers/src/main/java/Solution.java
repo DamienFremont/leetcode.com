@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 
 /**
  * Definition for singly-linked list.
@@ -11,29 +12,31 @@
  */
 class Solution {
 
+    // 10/05/2022 14:58	Accepted	73 ms	55 MB
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         var num1 = toNumber(l1);
         var num2 = toNumber(l2);
-        var res = num1 + num2;
+        var res = num1.add(num2);
         System.out.println("Explanation: " + num1 + " + " + num2 + " = " + res);
         System.out.println("Output: "+res);
         return toListNode(res);
     }
 
-    private long toNumber(ListNode node) {
-        return toNumberLoop(node, 0, 1);
+    private BigInteger toNumber(ListNode node) {
+        return toNumberLoop(node, new BigInteger("0"), new BigInteger("1"));
     }
 
-    private long toNumberLoop(ListNode node, long val, long order) {
-        var res = val + (node.val * order);
+    private BigInteger toNumberLoop(ListNode node, BigInteger val, BigInteger order) {
+        var res = val.add(order.multiply(new BigInteger(node.val + "")));
         if (node.next != null) {
-            return toNumberLoop(node.next, res, order * 10);
+            return toNumberLoop(node.next, res, order.multiply(new BigInteger("10")));
         }
         return res;
     }
 
-    private ListNode toListNode(long arg) {
-        var chars = Long.toString(arg);
+    private ListNode toListNode(BigInteger arg) {
+        var chars = arg.toString();
         ListNode last = null;
         for (int i = 0; i < chars.length(); i++) {
             var c = chars.charAt(i);
