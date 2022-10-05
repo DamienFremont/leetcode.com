@@ -70,17 +70,18 @@ class SolutionTest {
     }
 
     private ListNode when(int[] arg1, int[] arg2) {
+        System.out.println("");
         var cut = new Solution();
         var res = cut.addTwoNumbers(toListNode(arg1), toListNode(arg2));
         return res;
     }
 
     private String toString(int[] exp) {
-        var res = "";
+        var res = new StringBuilder("");
         for (var i : exp) {
-            res = res + i;
+            res.append(i);
         }
-        return res;
+        return res.reverse().toString();
     }
 
     private ListNode toListNode(int[] args) {
