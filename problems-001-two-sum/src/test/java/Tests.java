@@ -11,10 +11,10 @@ public class Tests {
     static void then(int[] exp, int[] res) {
         System.out.println("Expected: " + toString(exp));
         assertTrue(res != null);
-        assertEquals(exp.length, res.length, "length");
-        for (int i = 0; i < exp.length; i++) {
-            assertEquals(exp[i], res[i]);
-        }
+        assertEquals(2, res.length, "length");
+        var ord = (exp[0] == res[0]) && (exp[1] == res[1]);
+        var rev = (exp[0] == res[1]) && (exp[1] == res[0]);
+        assertTrue(ord || rev);
     }
 
     static String toString(int[] ints) {

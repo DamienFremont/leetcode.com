@@ -24,4 +24,28 @@ class SolutionTest {
 
         Tests.then(exp, res);
     }
+
+    @ParameterizedTest
+    @MethodSource("provideImpl")
+    void example2(Solution impl) {
+        var arg1 = new int[]{3, 2, 4};
+        var arg2 = 6;
+        var exp = new int[]{1, 2};
+
+        var res = Tests.when(impl, arg1, arg2);
+
+        Tests.then(exp, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideImpl")
+    void example3(Solution impl) {
+        var arg1 = new int[]{3, 3};
+        var arg2 = 6;
+        var exp = new int[]{0, 1};
+
+        var res = Tests.when(impl, arg1, arg2);
+
+        Tests.then(exp, res);
+    }
 }
