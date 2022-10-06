@@ -1,7 +1,7 @@
 leetcode.com
 ============
 
-Source for leetcode.com problems.
+Source for leetcode.com problems solutions.
 
 ![alt text](docs/leetcode-banner.png)
 
@@ -11,5 +11,5 @@ Source for leetcode.com problems.
 
 ![alt text](docs/leetcode-problems.png)
 
-Source:
-- [002-add-two-numbers](002-add-two-numbers)
+Solutions:
+- [problems-002-add-two-numbers](problems-002-add-two-numbers)
