@@ -10,6 +10,7 @@
     <modules>
         <module>problems-001-two-sum</module>
         <module>problems-002-add-two-numbers</module>
+        <module>problems-003-longest-substring-without-repeating-character</module>
     </modules>
 
     <properties>
