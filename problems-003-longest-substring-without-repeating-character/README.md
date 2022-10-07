@@ -5,7 +5,7 @@ Given a string s, find the length of the longest substring without repeating cha
 
 ## Results
 
-use 'sliding window' algorithm.
+TODO: use 'sliding window' algorithm.
 
 Final:
 - Runtime: 8 ms, faster than 82.29% of Java online submissions for Add Two Numbers.

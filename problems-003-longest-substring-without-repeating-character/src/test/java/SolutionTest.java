@@ -8,7 +8,8 @@ class SolutionTest {
 
     private static Stream<Arguments> provideImpl() {
         return Stream.of(
-                Arguments.of(new Solution())
+                Arguments.of(new Solution()),
+                Arguments.of(new Solution2())
         );
     }
 
